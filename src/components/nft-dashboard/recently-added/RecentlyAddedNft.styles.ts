@@ -3,6 +3,7 @@ import { Button } from '@app/components/common/buttons/Button/Button';
 import { BREAKPOINTS } from '@app/styles/themes/constants';
 
 export const SectionWrapper = styled.div`
+display: flex;
   .slick-slide > div {
     display: flex;
   }
@@ -16,7 +17,6 @@ export const SectionWrapper = styled.div`
 
   @media only screen and (max-width: ${BREAKPOINTS.md - 0.02}px) {
     display: flex;
-    flex-direction: column;
     width: 100%;
     gap: 1.25rem;
     margin-bottom: 1.5rem;
@@ -31,6 +31,12 @@ export const ViewAllWrapper = styled.div`
 export const CardWrapper = styled.div`
   margin: 0 0.625rem;
 `;
+
+export const NewCardWrapper = styled.div`
+  width:100%;
+  display:flex;
+  justify-content:space-evenly;
+`
 
 export const ArrowBtn = styled(Button)`
   color: var(--text-nft-light-color);

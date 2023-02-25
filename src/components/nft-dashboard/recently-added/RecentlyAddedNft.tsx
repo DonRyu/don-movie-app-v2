@@ -26,11 +26,9 @@ export const RecentlyAddedNft: React.FC = () => {
     return {
       mobile: nfts.slice(0, 3).map((nft) => <NftCard key={nft.title} nftItem={nft} />),
       tablet: nfts.map((nft) => (
-        <div key={nft.title}>
-          <S.CardWrapper>
-            <NftCard nftItem={nft} />
-          </S.CardWrapper>
-        </div>
+        <S.NewCardWrapper>
+          <NftCard nftItem={nft} />
+        </S.NewCardWrapper>
       )),
     };
   }, [nfts]);
@@ -40,7 +38,7 @@ export const RecentlyAddedNft: React.FC = () => {
 
   return (
     <>
-      <NFTCardHeader title={t('nft.recentlyAddedNFTs')}>
+      {/* <NFTCardHeader title={t('nft.recentlyAddedNFTs')}>
         {isTablet && (
           <Row align="middle">
             <Col>
@@ -60,29 +58,12 @@ export const RecentlyAddedNft: React.FC = () => {
             </Col>
           </Row>
         )}
-      </NFTCardHeader>
+      </NFTCardHeader> */}
 
       <S.SectionWrapper>
+        {isTablet && nfts.length > 0 && cards.tablet}
         {mobileOnly && cards.mobile}
-
-        {isTablet && nfts.length > 0 && (
-          <Carousel
-            ref={sliderRef}
-            slidesToShow={3}
-            responsive={[
-              {
-                breakpoint: 1900,
-                settings: {
-                  slidesToShow: 2,
-                },
-              },
-            ]}
-          >
-            {cards.tablet}
-          </Carousel>
-        )}
       </S.SectionWrapper>
-
       {mobileOnly && (
         <S.ViewAllWrapper>
           <ViewAll />

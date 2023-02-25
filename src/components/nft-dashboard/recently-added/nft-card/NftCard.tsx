@@ -51,12 +51,12 @@ export const NftCard: React.FC<NftCardProps> = ({ nftItem }) => {
 
   return (
     <S.Card padding={0} $img={nftItem.image}>
-      <S.NftImage src={nftItem.image} alt="nftImage" />
+      <S.NftImage src={'asd'} alt="nftImage" />
       <S.NftInfo>
         <S.InfoRow>
           <S.Title>{nftItem.title}</S.Title>
         </S.InfoRow>
-        {isTablet ? tabletLayout : mobileLayout}
+        {/* {isTablet ? tabletLayout : mobileLayout} */}
       </S.NftInfo>
     </S.Card>
   );

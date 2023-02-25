@@ -17,67 +17,28 @@ const MedicalDashboardPage: React.FC = () => {
 
   const desktopLayout = (
     <Row>
-      <S.LeftSideCol xl={16} xxl={17} id="desktop-content">
-        <Row gutter={[60, 60]}>
-          <Col span={24}>
-            <TrendingCreators />
-          </Col>
-
-          <Col span={24}>
-            <RecentlyAddedNft />
-          </Col>
-
-          <Col span={24}>
-            <TrendingCollections />
-          </Col>
-
-          <Col span={24}>
-            <RecentActivity />
-          </Col>
-        </Row>
-        <References />
-      </S.LeftSideCol>
-
-      <S.RightSideCol xl={8} xxl={7}>
-        <div id="balance">
-          <Balance />
-        </div>
-        <S.Space />
-        <div id="total-earning">
-          <TotalEarning />
-        </div>
-        <S.Space />
-        <S.ScrollWrapper id="activity-story">
-          <ActivityStory />
-        </S.ScrollWrapper>
-      </S.RightSideCol>
+      {/* <S.LeftSideCol xl={16} xxl={17} id="desktop-content"> */}
+      <Row gutter={[60, 60]}>
+        <Col span={24}></Col>
+      </Row>
+      <RecentlyAddedNft />
+      {/* <References /> */}
+      {/* </S.LeftSideCol> */}
     </Row>
   );
 
   const mobileAndTabletLayout = (
     <Row gutter={[20, 24]}>
       <Col span={24}>
-        <TrendingCreators />
-      </Col>
-
-      <Col span={24}>
         <RecentlyAddedNft />
-      </Col>
-
-      <Col span={24}>
-        <TrendingCollections />
-      </Col>
-
-      <Col span={24}>
-        <RecentActivity />
       </Col>
     </Row>
   );
 
   return (
     <>
-      <PageTitle>NFT Dashboard</PageTitle>
-      {isDesktop ? desktopLayout : mobileAndTabletLayout}
+      <PageTitle>TOP 100</PageTitle>
+      {isDesktop ? <RecentlyAddedNft /> : mobileAndTabletLayout}
     </>
   );
 };
