@@ -128,11 +128,6 @@ export const Card = styled(NFTCard)<CardInternalProps>`
       position: relative;
     }
 
-    ${NftImage} {
-      animation: imgIn 0.5s;
-      animation-fill-mode: forwards;
-    }
-
     ${Title} {
       animation: titleIn 0.5s ease;
       animation-fill-mode: forwards;

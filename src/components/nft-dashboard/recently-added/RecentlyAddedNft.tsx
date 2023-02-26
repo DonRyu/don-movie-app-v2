@@ -6,32 +6,31 @@ import { Carousel } from '@app/components/common/Carousel/Carousel';
 import { NFTCardHeader } from '@app/components/nft-dashboard/common/NFTCardHeader/NFTCardHeader';
 import { ViewAll } from '@app/components/nft-dashboard/common/ViewAll/ViewAll';
 import { NftCard } from '@app/components/nft-dashboard/recently-added/nft-card/NftCard';
-import { getRecentlyAddedNfts, NftItem } from '@app/api/nftDashboard.api';
 import { useResponsive } from '@app/hooks/useResponsive';
 import * as S from './RecentlyAddedNft.styles';
+import Api from '../../../api/movieAPI';
 
 export const RecentlyAddedNft: React.FC = () => {
-  const [nfts, setNfts] = useState<NftItem[]>([]);
-
+  const [movieList, setMovieList] = useState([]);
   const { t } = useTranslation();
   const { mobileOnly, isTablet } = useResponsive();
 
   useEffect(() => {
-    getRecentlyAddedNfts().then((result) => {
-      setNfts(result);
+    Api.requestMovieData().then((res) => {
+      setMovieList(res.results)
     });
-  }, []);
+  }, [movieList]);
 
   const cards = useMemo(() => {
     return {
-      mobile: nfts.slice(0, 3).map((nft) => <NftCard key={nft.title} nftItem={nft} />),
-      tablet: nfts.map((nft) => (
+      // mobile: movieList.slice(0, 3).map((nft) => <NftCard key={nft.title} nftItem={nft} />),
+      tablet: movieList.map((item) => (
         <S.NewCardWrapper>
-          <NftCard nftItem={nft} />
+          <NftCard item={item} />
         </S.NewCardWrapper>
       )),
     };
-  }, [nfts]);
+  }, [movieList]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sliderRef = useRef<any>();
@@ -61,8 +60,8 @@ export const RecentlyAddedNft: React.FC = () => {
       </NFTCardHeader> */}
 
       <S.SectionWrapper>
-        {isTablet && nfts.length > 0 && cards.tablet}
-        {mobileOnly && cards.mobile}
+        {isTablet && cards.tablet}
+        {/* {mobileOnly && cards.mobile} */}
       </S.SectionWrapper>
       {mobileOnly && (
         <S.ViewAllWrapper>
