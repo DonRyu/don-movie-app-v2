@@ -25,6 +25,7 @@ display: flex;
 
 export const ViewAllWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 `;
 
@@ -35,7 +36,7 @@ export const CardWrapper = styled.div`
 export const NewCardWrapper = styled.div`
   width:100%;
   display:flex;
-  justify-content:space-evenly;
+  flex
 `
 
 export const ArrowBtn = styled(Button)`

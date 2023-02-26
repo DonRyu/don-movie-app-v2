@@ -9,26 +9,26 @@ export const NftCard: React.FC<any> = ({ item }) => {
   const { isTablet } = useResponsive();
   const MOVIE_POSETER_LINK = process.env.REACT_APP_MOVIE_POSTER_LINK;
 
-  // const tabletLayout = (
-  //   <>
-  //     <S.InfoHeader>
-  //       <S.InfoText>@{item.author}</S.InfoText>
-  //     </S.InfoHeader>
+  const tabletLayout = (
+    <>
+      <S.InfoHeader>
+        <S.InfoText>@{item.title}</S.InfoText>
+      </S.InfoHeader>
 
-  //     <S.InfoFooter>
-  //       <S.CurrentBidWrapper>
-  //         <S.CurrentBid>Current Bid</S.CurrentBid>
-  //         <S.BidCrypto>
-  //           {getCurrencyPrice(formatNumberWithCommas(item.currentBidCrypto), CurrencyTypeEnum.ETH, false)}
-  //         </S.BidCrypto>
-  //       </S.CurrentBidWrapper>
+      <S.InfoFooter>
+        <S.CurrentBidWrapper>
+          <S.CurrentBid>Current Bid</S.CurrentBid>
+          <S.BidCrypto>
+            {getCurrencyPrice(formatNumberWithCommas(item.title), CurrencyTypeEnum.ETH, false)}
+          </S.BidCrypto>
+        </S.CurrentBidWrapper>
 
-  //       <S.CurrentBidWrapper>
-  //         <S.Bid>{getCurrencyPrice(formatNumberWithCommas(item.currentBid), CurrencyTypeEnum.USD)}</S.Bid>
-  //       </S.CurrentBidWrapper>
-  //     </S.InfoFooter>
-  //   </>
-  // );
+        <S.CurrentBidWrapper>
+          <S.Bid>{getCurrencyPrice(formatNumberWithCommas(item.title), CurrencyTypeEnum.USD)}</S.Bid>
+        </S.CurrentBidWrapper>
+      </S.InfoFooter>
+    </>
+  );
 
   // const mobileLayout = (
   //   <>
@@ -57,7 +57,6 @@ export const NftCard: React.FC<any> = ({ item }) => {
         <S.InfoRow>
           <S.Title>{item.title}</S.Title>
         </S.InfoRow>
-        {/* {isTablet ? tabletLayout : mobileLayout} */}
       </S.NftInfo>
     </S.Card>
   );

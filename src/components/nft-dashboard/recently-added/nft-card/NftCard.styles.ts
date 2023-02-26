@@ -120,69 +120,69 @@ export const Card = styled(NFTCard)<CardInternalProps>`
   overflow: hidden;
 
   &:hover {
-    & {
-      background: ${(props) => `url(${props.$img})`};
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
+    // & {
+    //   background: ${(props) => `url(${props.$img})`};
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    //   background-position: center;
+    //   position: relative;
+    // }
 
-    ${Title} {
-      animation: titleIn 0.5s ease;
-      animation-fill-mode: forwards;
+    // ${Title} {
+    //   animation: titleIn 0.5s ease;
+    //   animation-fill-mode: forwards;
 
-      color: var(--text-secondary-color);
-    }
+    //   color: var(--text-secondary-color);
+    // }
 
-    ${InfoText} {
-      color: var(--text-secondary-color);
-    }
+    // ${InfoText} {
+    //   color: var(--text-secondary-color);
+    // }
 
-    ${BidCrypto} {
-      color: var(--text-secondary-color);
-    }
+    // ${BidCrypto} {
+    //   color: var(--text-secondary-color);
+    // }
   }
 
   @keyframes imgIn {
-    99% {
-      transform: scale(2);
-    }
+    // 99% {
+    //   transform: scale(2);
+    // }
 
-    100% {
-      opacity: 0;
-    }
+    // 100% {
+    //   opacity: 0;
+    // }
   }
 
   @keyframes imgOut {
-    0% {
-      transform: scale(2);
-    }
+    // 0% {
+    //   transform: scale(2);
+    // }
 
-    100% {
-      transform: scale(1);
-    }
+    // 100% {
+    //   transform: scale(1);
+    // }
   }
 
   @keyframes titleIn {
-    0% {
-      left: 0;
-    }
+    // 0% {
+    //   left: 0;
+    // }
 
-    100% {
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1.5);
-    }
+    // 100% {
+    //   left: 50%;
+    //   transform: translate(-50%, -50%) scale(1.5);
+    // }
   }
 
   @keyframes titleOut {
-    0% {
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1.5);
-    }
+    // 0% {
+    //   left: 50%;
+    //   transform: translate(-50%, -50%) scale(1.5);
+    // }
 
-    100% {
-      left: 0;
-    }
+    // 100% {
+    //   left: 0;
+    // }
   }
 `;
