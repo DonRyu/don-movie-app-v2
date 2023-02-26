@@ -29,23 +29,6 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     icon: <NftIcon />,
   },
   {
-    title: 'common.apps',
-    key: 'apps',
-    icon: <HomeOutlined />,
-    children: [
-      {
-        title: 'common.feed',
-        key: 'feed',
-        url: '/apps/feed',
-      },
-      {
-        title: 'common.kanban',
-        key: 'kanban',
-        url: '/apps/kanban',
-      },
-    ],
-  },
-  {
     title: 'My Movie',
     key: 'auth',
     icon: <UserOutlined />,
