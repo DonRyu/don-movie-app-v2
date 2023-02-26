@@ -17,18 +17,14 @@ export const RecentlyAddedNft: React.FC = () => {
 
   useEffect(() => {
     Api.requestMovieData().then((res) => {
-      setMovieList(res.results)
+      setMovieList(res.results);
     });
   }, [movieList]);
 
   const cards = useMemo(() => {
     return {
       // mobile: movieList.slice(0, 3).map((nft) => <NftCard key={nft.title} nftItem={nft} />),
-      tablet: movieList.map((item) => (
-        <S.NewCardWrapper>
-          <NftCard item={item} />
-        </S.NewCardWrapper>
-      )),
+      tablet: movieList.map((item) => <NftCard item={item} />),
     };
   }, [movieList]);
 
@@ -37,37 +33,15 @@ export const RecentlyAddedNft: React.FC = () => {
 
   return (
     <>
-      {/* <NFTCardHeader title={t('nft.recentlyAddedNFTs')}>
-        {isTablet && (
-          <Row align="middle">
-            <Col>
-              <ViewAll bordered={false} />
-            </Col>
-
-            <Col>
-              <S.ArrowBtn type="text" size="small" onClick={() => sliderRef.current && sliderRef.current.slickPrev()}>
-                <LeftOutlined />
-              </S.ArrowBtn>
-            </Col>
-
-            <Col>
-              <S.ArrowBtn type="text" size="small" onClick={() => sliderRef.current && sliderRef.current.slickNext()}>
-                <RightOutlined />
-              </S.ArrowBtn>
-            </Col>
-          </Row>
-        )}
-      </NFTCardHeader> */}
-
       <S.SectionWrapper>
-        {isTablet && cards.tablet}
+        {cards.tablet}
         {/* {mobileOnly && cards.mobile} */}
       </S.SectionWrapper>
-      {mobileOnly && (
+      {/* {mobileOnly && (
         <S.ViewAllWrapper>
           <ViewAll />
         </S.ViewAllWrapper>
-      )}
+      )} */}
     </>
   );
 };

@@ -22,17 +22,11 @@ export interface SidebarNavigationItem {
 
 export const sidebarNavigation: SidebarNavigationItem[] = [
   {
-    title: 'common.nft-dashboard',
-    key: 'nft-dashboard',
+    title: 'TOP 100',
+    key: 'top-100',
     // TODO use path variable
     url: '/',
     icon: <NftIcon />,
-  },
-  {
-    title: 'common.medical-dashboard',
-    key: 'medical-dashboard',
-    url: '/medical-dashboard',
-    icon: <DashboardOutlined />,
   },
   {
     title: 'common.apps',
@@ -52,7 +46,7 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     ],
   },
   {
-    title: 'common.authPages',
+    title: 'My Movie',
     key: 'auth',
     icon: <UserOutlined />,
     children: [
@@ -111,33 +105,6 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     key: 'charts',
     url: '/charts',
     icon: <LineChartOutlined />,
-  },
-  {
-    title: 'common.maps',
-    key: 'maps',
-    icon: <CompassOutlined />,
-    children: [
-      {
-        title: 'common.googleMap',
-        key: 'google-maps',
-        url: '/maps/google-maps',
-      },
-      {
-        title: 'common.leafletMap',
-        key: 'leaflet-maps',
-        url: '/maps/leaflet-maps',
-      },
-      {
-        title: 'common.reactSimpleMaps',
-        key: 'react-simple-maps',
-        url: '/maps/react-simple-maps',
-      },
-      {
-        title: 'common.pigeonMaps',
-        key: 'pigeon-maps',
-        url: '/maps/pigeon-maps',
-      },
-    ],
   },
   {
     title: 'common.pages',

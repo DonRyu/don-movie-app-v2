@@ -10,7 +10,6 @@ interface CardInternalProps {
 export const NftImage = styled.img`
   animation: imgOut 0.5s;
   width: 100%;
-  width: 300px;
   height: px;
   object-fit: cover;
   border-top-left-radius: ${BORDER_RADIUS};

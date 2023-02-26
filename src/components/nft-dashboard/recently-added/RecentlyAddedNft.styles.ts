@@ -3,7 +3,9 @@ import { Button } from '@app/components/common/buttons/Button/Button';
 import { BREAKPOINTS } from '@app/styles/themes/constants';
 
 export const SectionWrapper = styled.div`
-display: flex;
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+
   .slick-slide > div {
     display: flex;
   }
@@ -35,8 +37,8 @@ export const CardWrapper = styled.div`
 
 export const NewCardWrapper = styled.div`
   width:100%;
-  display:flex;
-  flex
+  display:grid;  
+  grid-template-columns: 1fr 1fr 1fr;
 `
 
 export const ArrowBtn = styled(Button)`
