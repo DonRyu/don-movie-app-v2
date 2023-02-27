@@ -6,7 +6,7 @@ class Api {
   static async requestMovieData() {
     try {
       let res: { msg?: string; data: any } = await axios({
-        url: `${MOVIE_API_URL}movie/popular?api_key=${MOVIE_API_KEY}&language=en-US&page=1`,
+        url: `${MOVIE_API_URL}movie/popular?api_key=${MOVIE_API_KEY}&language=en-US&page=2`,
         method: 'GET',
       });
       if (res?.msg) {

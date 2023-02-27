@@ -11,9 +11,9 @@ export const Rate: React.FC<RateProps> = (props) => {
   };
 
   return (
-    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <S.Rate {...props} />
-      <button
+      {/* <button
         onClick={() => addTodoList()}
         style={{ background: 'none', border: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
@@ -22,7 +22,7 @@ export const Rate: React.FC<RateProps> = (props) => {
         ) : (
           <CheckSquareOutlined style={{ fontSize: '30px' }} />
         )}
-      </button>
+      </button> */}
     </div>
   );
 };
