@@ -3,7 +3,7 @@ import { useResponsive } from '@app/hooks/useResponsive';
 import { formatNumberWithCommas, getCurrencyPrice } from '@app/utils/utils';
 import { CurrencyTypeEnum } from '@app/interfaces/interfaces';
 import * as S from './NftCard.styles';
-
+import { Rate } from '@app/components/common/Rate/Rate';
 
 export const NftCard: React.FC<any> = ({ item }) => {
   const { isTablet } = useResponsive();
@@ -14,17 +14,14 @@ export const NftCard: React.FC<any> = ({ item }) => {
       <S.InfoHeader>
         <S.InfoText>@{item.title}</S.InfoText>
       </S.InfoHeader>
-
       <S.InfoFooter>
         <S.CurrentBidWrapper>
           <S.CurrentBid>Current Bid</S.CurrentBid>
-          <S.BidCrypto>
-            {getCurrencyPrice(formatNumberWithCommas(item.title), CurrencyTypeEnum.ETH, false)}
-          </S.BidCrypto>
+          <S.BidCrypto>asd1</S.BidCrypto>
         </S.CurrentBidWrapper>
 
         <S.CurrentBidWrapper>
-          <S.Bid>{getCurrencyPrice(formatNumberWithCommas(item.title), CurrencyTypeEnum.USD)}</S.Bid>
+          <S.Bid>asd2</S.Bid>
         </S.CurrentBidWrapper>
       </S.InfoFooter>
     </>
@@ -47,17 +44,12 @@ export const NftCard: React.FC<any> = ({ item }) => {
   // );
 
   // w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
-
-  console.log('item',item)
-
+  
   return (
     <S.Card padding={0} $img={`${MOVIE_POSETER_LINK}w500/${item.poster_path}`}>
       <S.NftImage src={`${MOVIE_POSETER_LINK}w500/${item.poster_path}`} alt="nftImage" />
-      <S.NftInfo>
-        <S.InfoRow>
-          <S.Title>{item.title}</S.Title>
-        </S.InfoRow>
-      </S.NftInfo>
+      <Rate />
+    
     </S.Card>
   );
 };

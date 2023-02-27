@@ -5,6 +5,7 @@ import { BREAKPOINTS } from '@app/styles/themes/constants';
 export const SectionWrapper = styled.div`
  display: grid;
  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+ gap: 10px 10px;
 
   .slick-slide > div {
     display: flex;
