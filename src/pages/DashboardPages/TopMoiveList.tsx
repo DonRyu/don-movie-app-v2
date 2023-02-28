@@ -7,7 +7,7 @@ import { TrendingCreators } from '@app/components/nft-dashboard/trending-creator
 import { RecentlyAddedNft } from '@app/components/nft-dashboard/recently-added/RecentlyAddedNft';
 import Api from '../../api/movieAPI';
 
-const MedicalDashboardPage: React.FC = () => {
+const TopMoiveList: React.FC = () => {
   const { isDesktop } = useResponsive();
   const desktopLayout = <RecentlyAddedNft />;
 
@@ -22,9 +22,9 @@ const MedicalDashboardPage: React.FC = () => {
   return (
     <>
       <PageTitle>TOP 100</PageTitle>
-      {isDesktop ? desktopLayout : mobileAndTabletLayout}
+      <RecentlyAddedNft />
     </>
   );
 };
 
-export default MedicalDashboardPage;
+export default TopMoiveList;

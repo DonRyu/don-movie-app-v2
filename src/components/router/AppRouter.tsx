@@ -14,7 +14,7 @@ import MainLayout from '@app/components/layouts/main/MainLayout/MainLayout';
 import ProfileLayout from '@app/components/profile/ProfileLayout';
 import RequireAuth from '@app/components/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
-import NftDashboardPage from '@app/pages/DashboardPages/NftDashboardPage';
+import TopMoiveListPage from '@app/pages/DashboardPages/TopMoiveList';
 
 const DataTablesPage = React.lazy(() => import('@app/pages/DataTablesPage'));
 const ChartsPage = React.lazy(() => import('@app/pages/ChartsPage'));
@@ -57,7 +57,7 @@ const Logout = React.lazy(() => import('./Logout'));
 export const NFT_DASHBOARD_PATH = '/';
 export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
 
-const NftDashboard = withLoading(NftDashboardPage);
+const TopMoiveList = withLoading(TopMoiveListPage);
 const AdvancedForm = withLoading(AdvancedFormsPage);
 
 // UI Components
@@ -115,7 +115,7 @@ export const AppRouter: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
-          <Route index element={<NftDashboard />} />
+          <Route index element={<TopMoiveList />} />
       
           <Route path="forms">
             <Route path="advanced-forms" element={<AdvancedForm />} />

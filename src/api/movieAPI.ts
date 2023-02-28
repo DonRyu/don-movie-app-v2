@@ -3,10 +3,10 @@ const MOVIE_API_URL = process.env.REACT_APP_MOVIE_API_URL;
 const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 class Api {
-  static async requestMovieData() {
+  static async requestMovieData(page:number) {
     try {
       let res: { msg?: string; data: any } = await axios({
-        url: `${MOVIE_API_URL}movie/popular?api_key=${MOVIE_API_KEY}&language=en-US&page=2`,
+        url: `${MOVIE_API_URL}movie/popular?api_key=${MOVIE_API_KEY}&language=en-US&page=${page}`,
         method: 'GET',
       });
       if (res?.msg) {

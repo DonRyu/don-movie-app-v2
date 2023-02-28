@@ -1,47 +1,52 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Col, Row } from 'antd';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import { Carousel } from '@app/components/common/Carousel/Carousel';
-import { NFTCardHeader } from '@app/components/nft-dashboard/common/NFTCardHeader/NFTCardHeader';
-import { ViewAll } from '@app/components/nft-dashboard/common/ViewAll/ViewAll';
+import { Col, List, Row } from 'antd';
 import { NftCard } from '@app/components/nft-dashboard/recently-added/nft-card/NftCard';
 import { useResponsive } from '@app/hooks/useResponsive';
 import * as S from './RecentlyAddedNft.styles';
 import Api from '../../../api/movieAPI';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const RecentlyAddedNft: React.FC = () => {
-  const [movieList, setMovieList] = useState([]);
-  const { t } = useTranslation();
-  const { mobileOnly, isTablet } = useResponsive();
+  const [loading, setLoading] = useState(false);
+  const [movieList, setMovieList] = useState<any>([]);
+
+  const loadMoreData = () => {
+    console.log('asdasda');
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    Api.requestMovieData(1).then((res) => {
+      let arr = [...movieList, ...res.results];
+      setMovieList(arr);
+      setLoading(false);
+    });
+  };
 
   useEffect(() => {
-    Api.requestMovieData().then((res) => {
-      setMovieList(res.results);
-    });
-  }, [movieList]);
-
-  const cards = useMemo(() => {
-    return {
-      // mobile: movieList.slice(0, 3).map((nft) => <NftCard key={nft.title} nftItem={nft} />),
-      tablet: movieList.map((item) => <NftCard item={item} />),
-    };
-  }, [movieList]);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sliderRef = useRef<any>();
+    loadMoreData();
+  }, []);
 
   return (
-    <>
-      <S.SectionWrapper>
-        {cards.tablet}
-        {/* {mobileOnly && cards.mobile} */}
-      </S.SectionWrapper>
-      {/* {mobileOnly && (
-        <S.ViewAllWrapper>
-          <ViewAll />
-        </S.ViewAllWrapper>
-      )} */}
-    </>
+    <InfiniteScroll
+      dataLength={movieList.length}
+      next={loadMoreData}
+      hasMore={true}
+      loader={<div>loader</div>}
+      endMessage={<span>This is the end</span>}
+      scrollableTarget="scrollableTarget"
+    >
+      <List
+        grid={{ gutter: 16, column: 7 }}
+        dataSource={movieList}
+        renderItem={(item, key) => (
+          <List.Item key={key}>
+            <NftCard item={item} />
+          </List.Item>
+        )}
+      />
+    </InfiniteScroll>
   );
+  
 };
