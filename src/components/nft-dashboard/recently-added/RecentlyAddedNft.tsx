@@ -43,9 +43,9 @@ export const RecentlyAddedNft: React.FC = () => {
       <InfiniteScroll
         dataLength={movieList.length}
         next={loadMoreData}
-        hasMore={movieList.length <= 50}
+        hasMore={movieList.length <= 100}
         loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-        endMessage={<Divider plain>This is the Top 50 movies now</Divider>}
+        endMessage={<Divider plain>This is the Top 100 movies now</Divider>}
         scrollableTarget="scrollableDiv"
       >
         <List

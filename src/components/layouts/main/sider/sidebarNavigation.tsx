@@ -22,7 +22,7 @@ export interface SidebarNavigationItem {
 
 export const sidebarNavigation: SidebarNavigationItem[] = [
   {
-    title: 'TOP 50',
+    title: 'TOP 100',
     key: 'top-50',
     // TODO use path variable
     url: '/',

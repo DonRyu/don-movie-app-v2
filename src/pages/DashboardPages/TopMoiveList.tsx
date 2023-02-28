@@ -8,19 +8,8 @@ import Api from '../../api/movieAPI';
 
 const TopMoiveList: React.FC = () => {
   const { isDesktop } = useResponsive();
-  const desktopLayout = <RecentlyAddedNft />;
-
-  const mobileAndTabletLayout = (
-    <Row gutter={[20, 24]}>
-      <Col span={24}>
-        <RecentlyAddedNft />
-      </Col>
-    </Row>
-  );
-
   return (
     <>
-      <PageTitle>TOP 100</PageTitle>
       <RecentlyAddedNft />
     </>
   );
