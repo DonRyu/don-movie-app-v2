@@ -22,8 +22,8 @@ export interface SidebarNavigationItem {
 
 export const sidebarNavigation: SidebarNavigationItem[] = [
   {
-    title: 'TOP 100',
-    key: 'top-100',
+    title: 'TOP 50',
+    key: 'top-50',
     // TODO use path variable
     url: '/',
     icon: <NftIcon />,

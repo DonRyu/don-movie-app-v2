@@ -116,7 +116,6 @@ export const AppRouter: React.FC = () => {
       <Routes>
         <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
           <Route index element={<TopMoiveList />} />
-      
           <Route path="forms">
             <Route path="advanced-forms" element={<AdvancedForm />} />
           </Route>

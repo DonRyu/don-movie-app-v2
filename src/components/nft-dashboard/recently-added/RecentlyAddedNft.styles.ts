@@ -39,7 +39,7 @@ export const CardWrapper = styled.div`
 export const NewCardWrapper = styled.div`
   width:100%;
   display:grid;  
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `
 
 export const ArrowBtn = styled(Button)`
