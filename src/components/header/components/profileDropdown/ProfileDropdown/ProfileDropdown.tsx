@@ -12,18 +12,18 @@ export const ProfileDropdown: React.FC = () => {
 
   const user = useAppSelector((state) => state.user.user);
 
-  return user ? (
+  return (
     <Popover content={<ProfileOverlay />} trigger="click">
       <S.ProfileDropdownHeader as={Row} gutter={[10, 10]} align="middle">
         <Col>
-          <Avatar src={user.imgUrl} alt="User" shape="circle" size={40} />
+          <Avatar src={user?.imgUrl} alt="User" shape="circle" size={40} />
         </Col>
         {isTablet && (
           <Col>
-            <H6>{`${user.firstName} ${user.lastName[0]}`}</H6>
+            <H6>{`${user?.firstName} ${user?.lastName[0]}`}</H6>
           </Col>
         )}
       </S.ProfileDropdownHeader>
     </Popover>
-  ) : null;
+  )
 };
