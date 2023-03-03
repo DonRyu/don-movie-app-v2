@@ -6,6 +6,7 @@ import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
 import { SettingsDropdown } from '../components/settingsDropdown/SettingsDropdown';
 import { HeaderFullscreen } from '../components/HeaderFullscreen/HeaderFullscreen';
 import * as S from '../Header.styles';
+import { ThemePicker } from '../components/settingsDropdown/settingsOverlay/ThemePicker/ThemePicker';
 
 interface DesktopHeaderProps {
   isTwoColumnsLayout: boolean;
@@ -18,7 +19,6 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
         <Col xl={15} xxl={12}>
           <HeaderSearch />
         </Col>
-      
       </Row>
     </S.SearchColumn>
   ) : (
@@ -35,7 +35,7 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
 
       <S.ProfileColumn xl={8} xxl={7} $isTwoColumnsLayout={isTwoColumnsLayout}>
         <Row align="middle" justify="end" gutter={[10, 10]}>
-          <Col>
+          {/* <Col>
             <Row gutter={[{ xxl: 10 }, { xxl: 10 }]}>
               <Col>
                 <HeaderFullscreen />
@@ -49,8 +49,10 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
                 <SettingsDropdown />
               </Col>
             </Row>
+          </Col> */}
+          <Col>
+            <ThemePicker />
           </Col>
-
           <Col>
             <ProfileDropdown />
           </Col>
