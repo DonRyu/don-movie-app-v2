@@ -4,11 +4,9 @@ import { Avatar } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { initValues as loginInitVal } from '@app/components/auth/LoginForm/LoginForm';
-import { notificationController } from '@app/controllers/notificationController';
 import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { Dates } from '@app/constants/Dates';
-import { doLogin } from '@app/store/slices/authSlice';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import * as S from './LockForm.styles';
 
@@ -42,15 +40,7 @@ export const LockForm: React.FC = () => {
 
   const handleSubmit = ({ password }: LockFormData) => {
     setLoading(true);
-    dispatch(doLogin({ email: user?.email.name || '', password }))
-      .unwrap()
-      .then(() => {
-        navigate(-1);
-      })
-      .catch((e) => {
-        notificationController.error({ message: e.message });
-        setLoading(false);
-      });
+   
   };
 
   return (

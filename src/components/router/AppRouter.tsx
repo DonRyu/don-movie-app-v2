@@ -6,7 +6,6 @@ const AuthLayout = React.lazy(() => import('@app/components/layouts/AuthLayout/A
 import LoginPage from '@app/pages/LoginPage';
 import SignUpPage from '@app/pages/SignUpPage';
 import ForgotPasswordPage from '@app/pages/ForgotPasswordPage';
-import SecurityCodePage from '@app/pages/SecurityCodePage';
 import NewPasswordPage from '@app/pages/NewPasswordPage';
 import LockPage from '@app/pages/LockPage';
 
@@ -22,7 +21,6 @@ const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
 const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
 const AdvancedFormsPage = React.lazy(() => import('@app/pages/AdvancedFormsPage'));
 const PersonalInfoPage = React.lazy(() => import('@app/pages/PersonalInfoPage'));
-const SecuritySettingsPage = React.lazy(() => import('@app/pages/SecuritySettingsPage'));
 const NotificationsPage = React.lazy(() => import('@app/pages/NotificationsPage'));
 const PaymentsPage = React.lazy(() => import('@app/pages/PaymentsPage'));
 const ButtonsPage = React.lazy(() => import('@app/pages/uiComponentsPages/ButtonsPage'));
@@ -97,7 +95,6 @@ const Error404 = withLoading(Error404Page);
 
 // Profile
 const PersonalInfo = withLoading(PersonalInfoPage);
-const SecuritySettings = withLoading(SecuritySettingsPage);
 const Notifications = withLoading(NotificationsPage);
 const Payments = withLoading(PaymentsPage);
 
@@ -125,7 +122,6 @@ export const AppRouter: React.FC = () => {
           <Route path="404" element={<Error404 />} />
           <Route path="profile" element={<ProfileLayout />}>
             <Route path="personal-info" element={<PersonalInfo />} />
-            <Route path="security-settings" element={<SecuritySettings />} />
             <Route path="notifications" element={<Notifications />} />
             <Route path="payments" element={<Payments />} />
           </Route>
@@ -171,7 +167,6 @@ export const AppRouter: React.FC = () => {
             }
           />
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="security-code" element={<SecurityCodePage />} />
           <Route path="new-password" element={<NewPasswordPage />} />
         </Route>
         <Route path="/logout" element={<LogoutFallback />} />

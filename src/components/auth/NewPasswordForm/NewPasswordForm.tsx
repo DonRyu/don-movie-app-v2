@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
-import { notificationController } from '@app/controllers/notificationController';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { doSetNewPassword } from '@app/store/slices/authSlice';
 import * as S from './NewPasswordForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 
@@ -26,19 +24,19 @@ export const NewPasswordForm: React.FC = () => {
 
   const handleSubmit = (values: NewPasswordFormData) => {
     setLoading(true);
-    dispatch(doSetNewPassword({ newPassword: values.password }))
-      .unwrap()
-      .then(() => {
-        navigate('/auth/login');
-        notificationController.success({
-          message: t('newPassword.successMessage'),
-          description: t('newPassword.successDescription'),
-        });
-      })
-      .catch((err) => {
-        notificationController.error({ message: err.message });
-        setLoading(false);
-      });
+    // dispatch(doSetNewPassword({ newPassword: values.password }))
+    //   .unwrap()
+    //   .then(() => {
+    //     navigate('/auth/login');
+    //     notificationController.success({
+    //       message: t('newPassword.successMessage'),
+    //       description: t('newPassword.successDescription'),
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     notificationController.error({ message: err.message });
+    //     setLoading(false);
+    //   });
   };
 
   return (

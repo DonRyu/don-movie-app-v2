@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { doSignUp } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
 import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
@@ -36,19 +35,19 @@ export const SignUpForm: React.FC = () => {
 
   const handleSubmit = (values: SignUpFormData) => {
     setLoading(true);
-    dispatch(doSignUp(values))
-      .unwrap()
-      .then(() => {
-        notificationController.success({
-          message: t('auth.signUpSuccessMessage'),
-          description: t('auth.signUpSuccessDescription'),
-        });
-        navigate('/auth/login');
-      })
-      .catch((err) => {
-        notificationController.error({ message: err.message });
-        setLoading(false);
-      });
+    // dispatch(doSignUp(values))
+    //   .unwrap()
+    //   .then(() => {
+    //     notificationController.success({
+    //       message: t('auth.signUpSuccessMessage'),
+    //       description: t('auth.signUpSuccessDescription'),
+    //     });
+    //     navigate('/auth/login');
+    //   })
+    //   .catch((err) => {
+    //     notificationController.error({ message: err.message });
+    //     setLoading(false);
+    //   });
   };
 
   return (

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { doLogin } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
@@ -27,13 +26,7 @@ export const LoginForm: React.FC = () => {
 
   const handleSubmit = (values: LoginFormData) => {
     setLoading(true);
-    dispatch(doLogin(values))
-      .unwrap()
-      .then(() => navigate('/'))
-      .catch((err) => {
-        notificationController.error({ message: err.message });
-        setLoading(false);
-      });
+   
   };
 
   return (
