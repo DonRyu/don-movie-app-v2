@@ -35,21 +35,6 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
 
       <S.ProfileColumn xl={8} xxl={7} $isTwoColumnsLayout={isTwoColumnsLayout}>
         <Row align="middle" justify="end" gutter={[10, 10]}>
-          {/* <Col>
-            <Row gutter={[{ xxl: 10 }, { xxl: 10 }]}>
-              <Col>
-                <HeaderFullscreen />
-              </Col>
-
-              <Col>
-                <NotificationsDropdown />
-              </Col>
-
-              <Col>
-                <SettingsDropdown />
-              </Col>
-            </Row>
-          </Col> */}
           <Col>
             <ThemePicker />
           </Col>

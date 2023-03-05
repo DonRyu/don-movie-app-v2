@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Avatar, Col, Row } from 'antd';
 import { H6 } from '@app/components/common/typography/H6/H6';
 import { ProfileOverlay } from '../ProfileOverlay/ProfileOverlay';
@@ -6,11 +6,18 @@ import { useAppSelector } from '@app/hooks/reduxHooks';
 import { useResponsive } from '@app/hooks/useResponsive';
 import * as S from './ProfileDropdown.styles';
 import { Popover } from '@app/components/common/Popover/Popover';
+import {Cookies} from 'react-cookie'
+const cookies = new Cookies()
+
 
 export const ProfileDropdown: React.FC = () => {
   const { isTablet } = useResponsive();
 
   const user = useAppSelector((state) => state.user.user);
+
+  useEffect(() => {
+    console.log('cookies.get()',cookies.get('accessToken'))
+  }, []);
 
   return (
     <Popover content={<ProfileOverlay />} trigger="click">
@@ -25,5 +32,5 @@ export const ProfileDropdown: React.FC = () => {
         )}
       </S.ProfileDropdownHeader>
     </Popover>
-  )
+  );
 };

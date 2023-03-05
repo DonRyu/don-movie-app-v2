@@ -1,12 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+import {Cookies} from 'react-cookie'
+const cookies = new Cookies()
 
 
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState:{},
-  reducers: {},
+  initialState:{
+    isLogin:false
+  },
+  reducers: {
+    isLogin:(state, action)=>{
+       
+    }
+  },
   extraReducers: (builder) => {
    
   },

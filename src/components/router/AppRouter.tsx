@@ -15,7 +15,6 @@ import RequireAuth from '@app/components/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
 import TopMoiveListPage from '@app/pages/DashboardPages/TopMoiveList';
 
-const DataTablesPage = React.lazy(() => import('@app/pages/DataTablesPage'));
 const ChartsPage = React.lazy(() => import('@app/pages/ChartsPage'));
 const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
 const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
@@ -86,8 +85,6 @@ const Results = withLoading(ResultsPage);
 const Alerts = withLoading(AlertsPage);
 const NotificationsUI = withLoading(NotificationsUIPage);
 const Skeletons = withLoading(SkeletonsPage);
-
-const DataTables = withLoading(DataTablesPage);
 const Charts = withLoading(ChartsPage);
 
 const ServerError = withLoading(ServerErrorPage);
@@ -102,21 +99,20 @@ const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
 
 export const AppRouter: React.FC = () => {
-  const protectedLayout = (
-    <RequireAuth>
-      <MainLayout />
-    </RequireAuth>
-  );
+  // const protectedLayout = (
+  //   <RequireAuth>
+  //     <MainLayout />
+  //   </RequireAuth>
+  // );
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={NFT_DASHBOARD_PATH} element={protectedLayout}>
+        <Route path={NFT_DASHBOARD_PATH} element={ <MainLayout />}>
           <Route index element={<TopMoiveList />} />
           <Route path="forms">
             <Route path="advanced-forms" element={<AdvancedForm />} />
           </Route>
-          <Route path="data-tables" element={<DataTables />} />
           <Route path="charts" element={<Charts />} />
           <Route path="server-error" element={<ServerError />} />
           <Route path="404" element={<Error404 />} />
@@ -156,16 +152,16 @@ export const AppRouter: React.FC = () => {
           </Route>
         </Route>
         <Route path="/auth" element={<AuthLayoutFallback />}>
-          <Route path="login" element={<LoginPage />} />
+          <Route path="login" element={<LoginPage />} />ㅌ
           <Route path="sign-up" element={<SignUpPage />} />
-          <Route
+          {/* <Route
             path="lock"
             element={
               <RequireAuth>
                 <LockPage />
               </RequireAuth>
             }
-          />
+          /> */}
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
           <Route path="new-password" element={<NewPasswordPage />} />
         </Route>
