@@ -12,10 +12,6 @@ interface LoginFormData {
   password: string;
 }
 
-export const initValues: LoginFormData = {
-  email: 'hello@altence.com',
-  password: 'some-test-pass',
-};
 
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -25,13 +21,13 @@ export const LoginForm: React.FC = () => {
   const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = (values: LoginFormData) => {
-    setLoading(true);
+    // setLoading(true);
    
   };
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
+      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional">
         <Auth.FormTitle>{t('common.login')}</Auth.FormTitle>
         <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription>
         <Auth.FormItem
@@ -45,21 +41,16 @@ export const LoginForm: React.FC = () => {
             },
           ]}
         >
-          <Auth.FormInput placeholder={t('common.email')} />
+          <Auth.FormInput />
         </Auth.FormItem>
         <Auth.FormItem
           label={t('common.password')}
           name="password"
           rules={[{ required: true, message: t('common.requiredField') }]}
         >
-          <Auth.FormInputPassword placeholder={t('common.password')} />
+          <Auth.FormInputPassword />
         </Auth.FormItem>
         <Auth.ActionsWrapper>
-          <BaseForm.Item name="rememberMe" valuePropName="checked" noStyle>
-            <Auth.FormCheckbox>
-              <S.RememberMeText>{t('login.rememberMe')}</S.RememberMeText>
-            </Auth.FormCheckbox>
-          </BaseForm.Item>
           <Link to="/auth/forgot-password">
             <S.ForgotPasswordText>{t('common.forgotPass')}</S.ForgotPasswordText>
           </Link>
