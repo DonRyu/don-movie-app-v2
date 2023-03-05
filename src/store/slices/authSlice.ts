@@ -1,11 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Cookies } from 'react-cookie';
+import axios from 'axios';
 const cookies = new Cookies();
+export const API_HOST =
+  process.env.NODE_ENV === "production"
+    ? "http://54.197.128.126:8080"
+    : "http://localhost:8080";
+
 
 const login = createAsyncThunk('auth/login', async () => {
-  const resp = await fetch('https://api.countapi.xyz/hit/opesaljkdfslkjfsadf.com/visits');
-  const data = await resp.json();
-  return data.value;
+
+  const res  = await axios({
+    url: ``,
+    method: 'GET',
+  });
+
+
 });
 
 const authSlice = createSlice({

@@ -5,7 +5,6 @@ import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/Ba
 import { TwoFactorOptions } from '@app/components/profile/profileCard/profileFormNav/nav/SecuritySettings/twoFactorAuth/TwoFactorOptions/TwoFactorOptions';
 import { TwoFactorSwitch } from '@app/components/profile/profileCard/profileFormNav/nav/SecuritySettings/twoFactorAuth/TwoFactorSwitch/TwoFactorSwitch';
 import { Button } from '@app/components/common/buttons/Button/Button';
-import { SecurityCodeForm } from '@app/components/auth/SecurityCodeForm/SecurityCodeForm';
 import { notificationController } from '@app/controllers/notificationController';
 import { setUser } from '@app/store/slices/userSlice';
 import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';
@@ -87,15 +86,6 @@ export const TwoFactorAuth: React.FC = () => {
           )}
         </Row>
       </BaseButtonsForm>
-      <S.AuthModal
-        destroyOnClose
-        open={isClickedVerify}
-        footer={false}
-        closable={false}
-        onCancel={() => setClickedVerify(false)}
-      >
-        <SecurityCodeForm onBack={() => setClickedVerify(false)} onFinish={onVerify} />
-      </S.AuthModal>
     </>
   );
 };

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
-import { initValues as loginInitVal } from '@app/components/auth/LoginForm/LoginForm';
 import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { Dates } from '@app/constants/Dates';
@@ -14,9 +13,6 @@ interface LockFormData {
   password: string;
 }
 
-const initValues = {
-  password: loginInitVal.password,
-};
 
 export const LockForm: React.FC = () => {
   const navigate = useNavigate();
@@ -45,7 +41,7 @@ export const LockForm: React.FC = () => {
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
+      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional">
         <S.ContentWrapper>
           <S.Time>{currentTime}</S.Time>
           <S.Date>{currentDate}</S.Date>
