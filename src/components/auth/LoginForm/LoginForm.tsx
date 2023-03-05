@@ -6,23 +6,27 @@ import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { notificationController } from '@app/controllers/notificationController';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
+import { useSelector } from 'react-redux';
+import API from '@app/api/API';
 
 interface LoginFormData {
   email: string;
   password: string;
 }
 
-
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const { t } = useTranslation();
-
   const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = (values: LoginFormData) => {
-    // setLoading(true);
-   
+    setLoading(true);
+    API.auth(values).then((res) => {
+      if (res) {
+        navigate('/');
+      }
+    });
+    setLoading(false);
   };
 
   return (

@@ -3,30 +3,33 @@ import { Cookies } from 'react-cookie';
 import axios from 'axios';
 const cookies = new Cookies();
 export const API_HOST =
-  process.env.NODE_ENV === "production"
-    ? "http://54.197.128.126:8080"
-    : "http://localhost:8080";
+  process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_URL : process.env.REACT_APP_DEV_URL;
 
-
-const login = createAsyncThunk('auth/login', async () => {
-
-  const res  = await axios({
-    url: ``,
-    method: 'GET',
-  });
-
-
-});
+// const login = createAsyncThunk('auth/login', async (userInfo: { email: string; password: string }) => {
+//   const res = await axios({
+//     url: `${API_HOST}/api/login`,
+//     method: 'POST',
+//     data: userInfo,
+//     withCredentials: true,
+//   });
+//   return res.data;
+// });
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isLogin: false,
+    loginStatus: '',
   },
   reducers: {
     isLogin: (state, action) => {},
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    // builder.addCase(login.fulfilled, (state, action) => {
+    //  state.isLogin = true
+    // });
+  },
 });
 
 export default authSlice.reducer;
+

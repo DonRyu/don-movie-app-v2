@@ -4,7 +4,7 @@ import { Col, Divider, List, Row, Skeleton } from 'antd';
 import { NftCard } from '@app/components/nft-dashboard/recently-added/nft-card/NftCard';
 import { useResponsive } from '@app/hooks/useResponsive';
 import * as S from './RecentlyAddedNft.styles';
-import Api from '../../../api/movieAPI';
+import Api from '../../../api/API';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { NewCardWrapper } from './RecentlyAddedNft.styles';
 
@@ -18,12 +18,11 @@ export const RecentlyAddedNft: React.FC = () => {
       return;
     }
     setLoading(true);
-    setPage(page=>page+1)
+    setPage((page) => page + 1);
     Api.requestMovieData(page).then((res) => {
-      console.log('res',res)
-      // let arr = [...movieList, ...res.results];
-      // setMovieList(arr);
-      // setLoading(false);
+      let arr = [...movieList, ...res.results];
+      setMovieList(arr);
+      setLoading(false);
     });
   };
 

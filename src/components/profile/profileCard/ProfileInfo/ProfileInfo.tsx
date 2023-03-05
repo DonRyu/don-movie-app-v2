@@ -5,7 +5,7 @@ import { UserModel } from '@app/domain/UserModel';
 import * as S from './ProfileInfo.styles';
 
 interface ProfileInfoProps {
-  profileData: UserModel | null;
+  profileData?: UserModel | null;
 }
 
 export const ProfileInfo: React.FC<ProfileInfoProps> = ({ profileData }) => {
