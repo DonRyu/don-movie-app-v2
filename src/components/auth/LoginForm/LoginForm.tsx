@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
-import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { notificationController } from '@app/controllers/notificationController';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
-import { useSelector } from 'react-redux';
 import API from '@app/api/API';
 
 interface LoginFormData {
@@ -23,10 +20,11 @@ export const LoginForm: React.FC = () => {
     setLoading(true);
     API.auth(values).then((res) => {
       if (res) {
-        navigate('/');
+        navigate('/',{replace:true})
       }
     });
     setLoading(false);
+    
   };
 
   return (
