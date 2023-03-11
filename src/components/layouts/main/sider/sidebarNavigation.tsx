@@ -66,24 +66,6 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     ],
   },
   {
-    title: 'common.forms',
-    key: 'forms',
-    icon: <FormOutlined />,
-    children: [
-      {
-        title: 'common.advancedForms',
-        key: 'advanced-forms',
-        url: '/forms/advanced-forms',
-      },
-    ],
-  },
-  {
-    title: 'common.dataTables',
-    key: 'dataTables',
-    url: '/data-tables',
-    icon: <TableOutlined />,
-  },
-  {
     title: 'common.charts',
     key: 'charts',
     url: '/charts',
