@@ -19,9 +19,12 @@ export const ProfileDropdown: React.FC = () => {
   const { isTablet } = useResponsive();
   const isLogin = useSelector((state: RootState) => state.auth.isLogin);
   let nickname = cookies.get('nickname');
+  let token = cookies.get('accessToken');
+
+
   return (
     <>
-      {isLogin ? (
+      {(isLogin || token )? (
         <Popover content={<ProfileOverlay />} trigger="click">
           <S.ProfileDropdownHeader as={Row} gutter={[10, 10]} align="middle">
             <Col>
