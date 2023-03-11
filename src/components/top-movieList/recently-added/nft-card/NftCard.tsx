@@ -49,7 +49,6 @@ export const NftCard: React.FC<any> = ({ item }) => {
     <S.Card padding={0} $img={`${MOVIE_POSETER_LINK}w500/${item.poster_path}`}>
       <S.NftImage src={`${MOVIE_POSETER_LINK}w500/${item.poster_path}`} alt="nftImage" />
       <Rate />
-    
     </S.Card>
   );
 };

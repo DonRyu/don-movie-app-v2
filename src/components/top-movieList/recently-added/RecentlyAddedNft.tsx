@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Col, Divider, List, Row, Skeleton } from 'antd';
-import { NftCard } from '@app/components/nft-dashboard/recently-added/nft-card/NftCard';
+import { NftCard } from '@app/components/top-movieList/recently-added/nft-card/NftCard';
 import { useResponsive } from '@app/hooks/useResponsive';
 import * as S from './RecentlyAddedNft.styles';
 import Api from '../../../api/API';
