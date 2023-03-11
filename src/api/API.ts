@@ -20,16 +20,6 @@ class Api {
       console.log('error', e);
     }
   }
-
-  static async auth(userInfo: { email: string; password: string }) {
-    const res = await axios({
-      url: `${API_HOST}/api/login`,
-      method: 'POST',
-      data: userInfo,
-      withCredentials: true,
-    });
-    return res.data;
-  }
 }
 
 export default Api;

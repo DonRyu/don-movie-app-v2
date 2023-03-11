@@ -1,8 +1,9 @@
-
 import authReducer from '@app/store/slices/authSlice';
 import themeReducer from '@app/store/slices/themeSlice';
 
 export default {
   auth: authReducer,
-  theme: themeReducer
+  theme: themeReducer,
 };
+
+export type RootState = ReturnType<any>;

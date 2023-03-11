@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { notificationController } from '@app/controllers/notificationController';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
-import API from '@app/api/API';
+import { auth } from '@app/store/slices/authSlice';
+import { useSelector } from 'react-redux';
 
 interface LoginFormData {
   email: string;
@@ -13,18 +16,18 @@ interface LoginFormData {
 
 export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = (values: LoginFormData) => {
     setLoading(true);
-    API.auth(values).then((res) => {
-      if (res) {
-        navigate('/',{replace:true})
+    dispatch(auth({data:values,path:'login'})).then((res) => {
+      if (res.payload === 'login success') {
+        navigate('/', { replace: true });
       }
     });
     setLoading(false);
-    
   };
 
   return (

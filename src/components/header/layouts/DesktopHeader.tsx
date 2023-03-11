@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row } from 'antd';
 import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
 import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
-import { SettingsDropdown } from '../components/settingsDropdown/SettingsDropdown';
-import { HeaderFullscreen } from '../components/HeaderFullscreen/HeaderFullscreen';
 import * as S from '../Header.styles';
 import { ThemePicker } from '../components/settingsDropdown/settingsOverlay/ThemePicker/ThemePicker';
+
 
 interface DesktopHeaderProps {
   isTwoColumnsLayout: boolean;
 }
 
 export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout }) => {
+
   const leftSide = isTwoColumnsLayout ? (
     <S.SearchColumn xl={16} xxl={17}>
       <Row justify="space-between">

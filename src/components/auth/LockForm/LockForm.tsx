@@ -22,8 +22,8 @@ export const LockForm: React.FC = () => {
 
   const [isLoading, setLoading] = useState(false);
   const [dateState, setDateState] = useState(new Date());
-  const user = useAppSelector((state) => state.user.user);
-  const fullName = `${user?.firstName} ${user?.lastName}`;
+  // const user = useAppSelector((state) => state.user.user);
+  // const fullName = `${user?.firstName} ${user?.lastName}`;
 
   const currentDateInUTC = dateState.toUTCString();
   const currentTime = Dates.format(currentDateInUTC, 'h:mm A');
@@ -46,9 +46,10 @@ export const LockForm: React.FC = () => {
           <S.Time>{currentTime}</S.Time>
           <S.Date>{currentDate}</S.Date>
           <S.AvatarCircle>
-            <Avatar src={user?.imgUrl} alt="user avatar" size={mobileOnly ? 59 : 77} />
+            ads
+            {/* <Avatar src={user?.imgUrl} alt="user avatar" size={mobileOnly ? 59 : 77} /> */}
           </S.AvatarCircle>
-          <S.Name>{fullName}</S.Name>
+          {/* <S.Name>{fullName}</S.Name> */}
         </S.ContentWrapper>
         <S.FormItem
           label={t('common.password')}
