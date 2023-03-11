@@ -17,16 +17,21 @@ const cookies = new Cookies();
 
 export const ProfileDropdown: React.FC = () => {
   const { isTablet } = useResponsive();
-  const dispatch = useAppDispatch();
+  const isLogin = useSelector((state: RootState) => state.auth.isLogin);
   let nickname = cookies.get('nickname');
-  let isLogin =  cookies.get('accessToken');
   return (
     <>
       {isLogin ? (
         <Popover content={<ProfileOverlay />} trigger="click">
           <S.ProfileDropdownHeader as={Row} gutter={[10, 10]} align="middle">
-            <Col><Avatar src={''} alt="User" shape="circle" size={40} /></Col>
-            {isTablet && <Col><H6>{`${nickname}`}</H6></Col>}
+            <Col>
+              <Avatar src={''} alt="User" shape="circle" size={40} />
+            </Col>
+            {isTablet && (
+              <Col>
+                <H6>{`${nickname}`}</H6>
+              </Col>
+            )}
           </S.ProfileDropdownHeader>
         </Popover>
       ) : (

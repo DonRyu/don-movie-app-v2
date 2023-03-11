@@ -24,6 +24,7 @@ export const LoginForm: React.FC = () => {
     setLoading(true);
     dispatch(auth({data:values,path:'login'})).then((res) => {
       if (res.payload === 'login success') {
+        
         navigate('/', { replace: true });
       }
     });

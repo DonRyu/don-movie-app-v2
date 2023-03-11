@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import { notificationController } from '@app/controllers/notificationController';
-const cookies = new Cookies();
 export const API_HOST =
   process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_URL : process.env.REACT_APP_DEV_URL;
 
@@ -26,17 +25,22 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     userInfo: {},
-    loginStatus: '',
+    isLogin: false,
   },
   reducers: {
-    isLogin: (state, action) => {},
+    logout: (state) => {
+      state.isLogin = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(auth.fulfilled, (state, action) => {
-      state.userInfo = action.payload;
+      if (action.payload === 'login success') {
+        state.isLogin = true;
+      }
     });
   },
 });
 
 export default authSlice.reducer;
+export const { logout } = authSlice.actions;
 export { auth };
