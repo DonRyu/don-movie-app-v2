@@ -6,9 +6,10 @@ import Button from 'antd/lib/button';
 import { Cookies } from 'react-cookie';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { logout } from '@app/store/slices/authSlice';
-const cookies = new Cookies();
+
 
 export const ProfileOverlay: React.FC = ({ ...props }) => {
+  const cookies = new Cookies();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
