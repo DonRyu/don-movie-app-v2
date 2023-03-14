@@ -59,6 +59,9 @@ export const LoginForm: React.FC = () => {
           <Link to="/auth/forgot-password">
             <S.ForgotPasswordText>{t('common.forgotPass')}</S.ForgotPasswordText>
           </Link>
+          <Link to="/auth/sign-up">
+            <S.ForgotPasswordText>{'Sign Up'}</S.ForgotPasswordText>
+          </Link>
         </Auth.ActionsWrapper>
         <BaseForm.Item noStyle>
           <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
