@@ -7,11 +7,17 @@ import * as S from './RecentlyAddedNft.styles';
 import Api from '../../../api/API';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { NewCardWrapper } from './RecentlyAddedNft.styles';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { rate } from '@app/store/slices/rateSlice';
+import { RootState } from '@app/store/slices';
+import { useSelector } from 'react-redux';
 
 export const RecentlyAddedNft: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [movieList, setMovieList] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
+  const isLogin = useSelector((state: RootState) => state.auth.isLogin);
+  const dispatch = useAppDispatch();
 
   const loadMoreData = () => {
     if (loading) {
@@ -29,6 +35,9 @@ export const RecentlyAddedNft: React.FC = () => {
   useEffect(() => {
     loadMoreData();
   }, []);
+  useEffect(() => {
+    isLogin && dispatch(rate({ data: {}, path: 'getRate' }));
+  }, [isLogin]);
 
   return (
     <div
@@ -51,7 +60,7 @@ export const RecentlyAddedNft: React.FC = () => {
         <List
           grid={{
             gutter: 16,
-            xs: 1,
+            xs: 2,
             sm: 2,
             md: 4,
             lg: 4,

@@ -24,7 +24,6 @@ export const LoginForm: React.FC = () => {
     setLoading(true);
     dispatch(auth({data:values,path:'login'})).then((res) => {
       if (res.payload === 'login success') {
-        
         navigate('/', { replace: true });
       }
     });
@@ -37,7 +36,7 @@ export const LoginForm: React.FC = () => {
         <Auth.FormTitle>{t('common.login')}</Auth.FormTitle>
         <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription>
         <Auth.FormItem
-          name="email"
+          name="user_id"
           label={t('common.email')}
           rules={[
             { required: true, message: t('common.requiredField') },
