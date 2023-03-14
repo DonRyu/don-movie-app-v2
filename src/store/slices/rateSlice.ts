@@ -5,7 +5,7 @@ import { notificationController } from '@app/controllers/notificationController'
 export const API_HOST =
   process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_URL : process.env.REACT_APP_DEV_URL;
 
-const auth = createAsyncThunk('auth/login', async (info: { data?: any; path: string }) => {
+const rate = createAsyncThunk('auth/rate', async (info: { data?: any; path: string }) => {
   const res = await axios({
     url: `${API_HOST}/api/${info.path}`,
     method: 'POST',
@@ -21,29 +21,21 @@ const auth = createAsyncThunk('auth/login', async (info: { data?: any; path: str
   return res.data;
 });
 
-const authSlice = createSlice({
-  name: 'auth',
+const rateSlice = createSlice({
+  name: 'rate',
   initialState: {
-    userInfo: {},
-    isLogin: false,
+    ratedList: [],
   },
-  reducers: {
-    logout: (state) => {
-      state.isLogin = false;
-    },
-    login:(state) => {
-      state.isLogin = true;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(auth.fulfilled, (state, action) => {
-      if (action.payload === 'login success') {
-        state.isLogin = true;
+    builder.addCase(rate.fulfilled, (state, action) => {
+      if ((action.payload.msg = 'getRate')) {
+        state.ratedList = action.payload.records;
       }
     });
   },
 });
 
-export default authSlice.reducer;
-export const { logout,login } = authSlice.actions;
-export { auth };
+export default rateSlice.reducer;
+// export const { logout,login } = authSlice.actions;
+export { rate };

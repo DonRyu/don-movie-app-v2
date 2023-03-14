@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { doSignUp } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
 import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
@@ -36,26 +35,26 @@ export const SignUpForm: React.FC = () => {
 
   const handleSubmit = (values: SignUpFormData) => {
     setLoading(true);
-    dispatch(doSignUp(values))
-      .unwrap()
-      .then(() => {
-        notificationController.success({
-          message: t('auth.signUpSuccessMessage'),
-          description: t('auth.signUpSuccessDescription'),
-        });
-        navigate('/auth/login');
-      })
-      .catch((err) => {
-        notificationController.error({ message: err.message });
-        setLoading(false);
-      });
+    // dispatch(doSignUp(values))
+    //   .unwrap()
+    //   .then(() => {
+    //     notificationController.success({
+    //       message: t('auth.signUpSuccessMessage'),
+    //       description: t('auth.signUpSuccessDescription'),
+    //     });
+    //     navigate('/auth/login');
+    //   })
+    //   .catch((err) => {
+    //     notificationController.error({ message: err.message });
+    //     setLoading(false);
+    //   });
   };
 
   return (
     <Auth.FormWrapper>
       <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
         <S.Title>{t('common.signUp')}</S.Title>
-        <Auth.FormItem
+        {/* <Auth.FormItem
           name="firstName"
           label={t('common.firstName')}
           rules={[{ required: true, message: t('common.requiredField') }]}
@@ -68,7 +67,7 @@ export const SignUpForm: React.FC = () => {
           rules={[{ required: true, message: t('common.requiredField') }]}
         >
           <Auth.FormInput placeholder={t('common.lastName')} />
-        </Auth.FormItem>
+        </Auth.FormItem> */}
         <Auth.FormItem
           name="email"
           label={t('common.email')}
@@ -127,22 +126,6 @@ export const SignUpForm: React.FC = () => {
           <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
             {t('common.signUp')}
           </Auth.SubmitButton>
-        </BaseForm.Item>
-        <BaseForm.Item noStyle>
-          <Auth.SocialButton type="default" htmlType="submit">
-            <Auth.SocialIconWrapper>
-              <GoogleIcon />
-            </Auth.SocialIconWrapper>
-            {t('signup.googleLink')}
-          </Auth.SocialButton>
-        </BaseForm.Item>
-        <BaseForm.Item noStyle>
-          <Auth.SocialButton type="default" htmlType="submit">
-            <Auth.SocialIconWrapper>
-              <FacebookIcon />
-            </Auth.SocialIconWrapper>
-            {t('signup.facebookLink')}
-          </Auth.SocialButton>
         </BaseForm.Item>
         <Auth.FooterWrapper>
           <Auth.Text>
