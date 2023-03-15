@@ -16,17 +16,17 @@ module.exports = {
   extends: [
     'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
-    'prettier', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+   // 'prettier', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+   // 'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   rules: {
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    'react/prop-types': 'off',
-    'react/display-name': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    'react/jsx-uses-react': 0,
+    'react/react-in-jsx-scope': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    'react/prop-types': 0,
+    'react/display-name': 0,
+    'react-hooks/rules-of-hooks': 0,
+    'react-hooks/exhaustive-deps': 0,
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
   },

@@ -23,8 +23,8 @@ export const ProfileDropdown: React.FC = () => {
   const { isTablet } = useResponsive();
   const isLogin = useSelector((state: RootState) => state.auth.isLogin);
   const dispatch = useAppDispatch();
-  let nickname = cookies.get('nickname');
-  let accessToken = cookies.get('accessToken');
+  const nickname = cookies.get('nickname');
+  const accessToken = cookies.get('accessToken');
   useEffect(() => {
     !isLogin &&
       dispatch(auth({ data: { accessToken }, path: 'isLogined' })).then((res) => {

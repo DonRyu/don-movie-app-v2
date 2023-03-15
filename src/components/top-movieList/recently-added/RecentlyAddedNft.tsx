@@ -26,7 +26,7 @@ export const RecentlyAddedNft: React.FC = () => {
     setLoading(true);
     setPage((page) => page + 1);
     Api.requestMovieData(page).then((res) => {
-      let arr = [...movieList, ...res.results];
+      const arr = [...movieList, ...res?.results];
       setMovieList(arr);
       setLoading(false);
     });

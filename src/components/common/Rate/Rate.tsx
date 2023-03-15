@@ -21,7 +21,7 @@ export const Rate: React.FC<any> = (props) => {
 
   const getUseRate = () => {
     if (isLogin && ratedList) {
-      let obj = ratedList?.find((item: any) => {
+      const obj = ratedList?.find((item: any) => {
         return item.movie_id === props.movie_id;
       });
       return obj?.rating;

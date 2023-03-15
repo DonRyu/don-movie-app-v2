@@ -7,7 +7,7 @@ export const API_HOST =
 class Api {
   static async requestMovieData(page: number) {
     try {
-      let res: { msg?: string; data: any } = await axios({
+      const res: { msg?: string; data: any } = await axios({
         url: `${MOVIE_API_URL}movie/popular?api_key=${MOVIE_API_KEY}&language=en-US&page=${page}`,
         method: 'GET',
       });
