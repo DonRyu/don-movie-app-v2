@@ -52,7 +52,7 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
       {
         title: 'common.forgotPass',
         key: 'forgotPass',
-        url: '/auth/forgot-password',
+        url: '/auth/forgot-password', 
       },
       {
         title: 'common.securityCode',
