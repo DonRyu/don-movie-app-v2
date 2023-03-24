@@ -13,6 +13,7 @@ import ProfileLayout from '@app/components/profile/ProfileLayout';
 import RequireAuth from '@app/components/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
 import TopMoiveListPage from '@app/pages/DashboardPages/TopMoiveList';
+import SecurityCodePage from '@app/pages/SecurityCodePage';
 const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
 const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
 const AdvancedFormsPage = React.lazy(() => import('@app/pages/AdvancedFormsPage'));
@@ -66,7 +67,7 @@ export const AppRouter: React.FC = () => {
               </RequireAuth>
             }
           /> */}
-            {/* <Route path="security-code" element={<SecurityCodePage />} /> */}
+          <Route path="security-code" element={<SecurityCodePage />} />
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
           <Route path="new-password" element={<NewPasswordPage />} />
         </Route>
