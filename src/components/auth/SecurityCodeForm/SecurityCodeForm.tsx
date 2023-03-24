@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { Image, Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { VerificationCodeInput } from '@app/components/common/VerificationCodeInput/VerificationCodeInput';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { doVerifySecurityCode } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
 import VerifyEmailImage from '@app/assets/images/verify-email.webp';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import * as S from './SecurityCodeForm.styles';
+import { auth } from '@app/store/slices/authSlice';
 
 interface SecurityCodeFormProps {
   onBack?: () => void;
@@ -20,23 +20,24 @@ export const SecurityCodeForm: React.FC<SecurityCodeFormProps> = ({ onBack, onFi
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
   const navigateBack = useCallback(() => navigate(-1), [navigate]);
   const navigateForward = useCallback(() => navigate('/auth/new-password'), [navigate]);
-
   const [securityCode, setSecurityCode] = useState('');
   const [isLoading, setLoading] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.state) {
+      navigate('/', { replace: true });
+    }
+  }, []);
 
   useEffect(() => {
     if (securityCode.length === 6) {
       setLoading(true);
-      dispatch(doVerifySecurityCode({ code: securityCode }))
-        .unwrap()
-        .then(onFinish || navigateForward)
-        .catch((err) => {
-          notificationController.error({ message: err.message });
-          setLoading(false);
-        });
+      dispatch(auth({ data: { ...location.state, securityCode }, path: 'verify' })).then((res) => {
+        return res;
+      });
     }
   }, [securityCode, navigateForward, onFinish, dispatch]);
 

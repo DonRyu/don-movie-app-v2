@@ -20,15 +20,6 @@ interface SignUpFormData {
   password: string;
 }
 
-const initValues = {
-  firstName: 'Chris',
-  lastName: 'Johnson',
-  email: 'chris.johnson@altence.com',
-  password: 'test-pass',
-  confirmPassword: 'test-pass',
-  termOfUse: true,
-};
-
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -39,13 +30,13 @@ export const SignUpForm: React.FC = () => {
 
   const handleSubmit = (values: SignUpFormData) => {
     setLoading(true);
-    dispatch(auth({data:values,path:'login'}))
+    dispatch(auth({ data: values, path: 'signUp' })).then((res) => {
+      if (res.payload) {
+        navigate('/auth/security-code', { replace: true,state:values });
+      }
+    });
+    setLoading(false);
   };
-
-  const verifyEmail = ()=>{
-    const email = form.getFieldValue(['email'])
-    email && dispatch(auth({data:email,path:'verify'}))
-  }
 
   return (
     <Auth.FormWrapper>
@@ -62,22 +53,15 @@ export const SignUpForm: React.FC = () => {
             },
           ]}
         >
-          <Auth.FormInput placeholder={t('common.email')} addonAfter={<div style={{cursor:'pointer'}} onClick={()=>verifyEmail()}>Verify</div>} />
+          <Auth.FormInput placeholder={t('common.email')} />
         </Auth.FormItem>
         <Auth.FormItem
-          name="verfication"
-          label={"Verfication Code"}
-          rules={[{ required: true, message: t('common.requiredField') }]}
-        >
-          <Auth.FormInputPassword placeholder={'Verification code'} />
-        </Auth.FormItem> 
-        <Auth.FormItem
           name="nickname"
-          label={"Nickname"}
+          label={'Nickname'}
           rules={[{ required: true, message: t('common.requiredField') }]}
         >
           <Auth.FormInput placeholder={'Nick name'} />
-        </Auth.FormItem> 
+        </Auth.FormItem>
         <Auth.FormItem
           label={t('common.password')}
           name="password"

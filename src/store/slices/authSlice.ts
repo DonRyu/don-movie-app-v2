@@ -17,6 +17,7 @@ const auth = createAsyncThunk('auth/login', async (info: { data?: any; path: str
     notificationController.error({
       message: `${res.data.error}`,
     });
+    return
   }
   return res.data;
 });
