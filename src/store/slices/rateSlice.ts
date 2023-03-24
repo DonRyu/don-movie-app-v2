@@ -7,7 +7,7 @@ export const API_HOST =
 
 const rate = createAsyncThunk('auth/rate', async (info: { data?: any; path: string }) => {
   const res = await axios({
-    url: `${API_HOST}/api/${info.path}`,
+    url: `${API_HOST}/${info.path}`,
     method: 'POST',
     data: info.data,
     withCredentials: true,
