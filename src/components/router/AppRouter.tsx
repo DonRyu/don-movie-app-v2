@@ -66,6 +66,7 @@ export const AppRouter: React.FC = () => {
               </RequireAuth>
             }
           /> */}
+            {/* <Route path="security-code" element={<SecurityCodePage />} /> */}
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
           <Route path="new-password" element={<NewPasswordPage />} />
         </Route>
