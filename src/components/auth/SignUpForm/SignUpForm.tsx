@@ -10,6 +10,8 @@ import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import * as S from './SignUpForm.styles';
 import Button from 'antd/lib/button';
+import { auth } from '@app/store/slices/authSlice';
+import { Form } from 'antd';
 
 interface SignUpFormData {
   firstName: string;
@@ -31,44 +33,24 @@ export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [isLoading, setLoading] = useState(false);
+  const [form] = Form.useForm<any>();
 
   const { t } = useTranslation();
 
   const handleSubmit = (values: SignUpFormData) => {
     setLoading(true);
-    // dispatch(doSignUp(values))
-    //   .unwrap()
-    //   .then(() => {
-    //     notificationController.success({
-    //       message: t('auth.signUpSuccessMessage'),
-    //       description: t('auth.signUpSuccessDescription'),
-    //     });
-    //     navigate('/auth/login');
-    //   })
-    //   .catch((err) => {
-    //     notificationController.error({ message: err.message });
-    //     setLoading(false);
-    //   });
+    dispatch(auth({data:values,path:'login'}))
   };
+
+  const verifyEmail = ()=>{
+    const email = form.getFieldValue(['email'])
+    email && dispatch(auth({data:email,path:'verify'}))
+  }
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional">
+      <Form layout="vertical" onFinish={handleSubmit} requiredMark="optional" form={form}>
         <S.Title>{t('common.signUp')}</S.Title>
-        {/* <Auth.FormItem
-          name="firstName"
-          label={t('common.firstName')}
-          rules={[{ required: true, message: t('common.requiredField') }]}
-        >
-          <Auth.FormInput placeholder={t('common.firstName')} />
-        </Auth.FormItem>
-        <Auth.FormItem
-          name="lastName"
-          label={t('common.lastName')}
-          rules={[{ required: true, message: t('common.requiredField') }]}
-        >
-          <Auth.FormInput placeholder={t('common.lastName')} />
-        </Auth.FormItem> */}
         <Auth.FormItem
           name="email"
           label={t('common.email')}
@@ -80,8 +62,22 @@ export const SignUpForm: React.FC = () => {
             },
           ]}
         >
-          <Auth.FormInput placeholder={t('common.email')} addonAfter={<div style={{cursor:'pointer'}}>Verify</div>} />
+          <Auth.FormInput placeholder={t('common.email')} addonAfter={<div style={{cursor:'pointer'}} onClick={()=>verifyEmail()}>Verify</div>} />
         </Auth.FormItem>
+        <Auth.FormItem
+          name="verfication"
+          label={"Verfication Code"}
+          rules={[{ required: true, message: t('common.requiredField') }]}
+        >
+          <Auth.FormInputPassword placeholder={'Verification code'} />
+        </Auth.FormItem> 
+        <Auth.FormItem
+          name="nickname"
+          label={"Nickname"}
+          rules={[{ required: true, message: t('common.requiredField') }]}
+        >
+          <Auth.FormInput placeholder={'Nick name'} />
+        </Auth.FormItem> 
         <Auth.FormItem
           label={t('common.password')}
           name="password"
@@ -136,7 +132,7 @@ export const SignUpForm: React.FC = () => {
             </Link>
           </Auth.Text>
         </Auth.FooterWrapper>
-      </BaseForm>
+      </Form>
     </Auth.FormWrapper>
   );
 };

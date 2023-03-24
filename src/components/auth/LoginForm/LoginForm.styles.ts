@@ -28,6 +28,6 @@ export const RememberMeText = styled.span`
 
 export const ForgotPasswordText = styled.span`
   color: var(--text-light-color);
-  font-size: ${FONT_SIZE.xs};
+  font-size: ${FONT_SIZE.md};
   text-decoration: underline;
 `;
