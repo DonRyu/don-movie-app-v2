@@ -9,6 +9,7 @@ import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import * as S from './SignUpForm.styles';
+import Button from 'antd/lib/button';
 
 interface SignUpFormData {
   firstName: string;
@@ -52,7 +53,7 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
+      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional">
         <S.Title>{t('common.signUp')}</S.Title>
         {/* <Auth.FormItem
           name="firstName"
@@ -79,7 +80,7 @@ export const SignUpForm: React.FC = () => {
             },
           ]}
         >
-          <Auth.FormInput placeholder={t('common.email')} />
+          <Auth.FormInput placeholder={t('common.email')} addonAfter={<div style={{cursor:'pointer'}}>Verify</div>} />
         </Auth.FormItem>
         <Auth.FormItem
           label={t('common.password')}
