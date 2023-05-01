@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Col, Row } from 'antd';
-import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
 import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
 import * as S from '../Header.styles';

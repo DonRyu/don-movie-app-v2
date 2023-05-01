@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
 import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
 import { SettingsDropdown } from '../components/settingsDropdown/SettingsDropdown';
@@ -20,9 +19,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ toggleSider, isSider
 
       <Col>
         <Row align="middle">
-          <Col>
-            <NotificationsDropdown />
-          </Col>
+          
 
           <Col>
             <HeaderSearch />
