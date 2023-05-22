@@ -6,18 +6,18 @@ export const API_HOST =
   process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_URL : process.env.REACT_APP_DEV_URL;
 
 const auth = createAsyncThunk('auth/login', async (info: { data?: any; path: string }) => {
-  const res = await axios({
+  const res:any = await axios({
     url: `${API_HOST}/auth/${info.path}`,
     method: 'POST',
     data: info.data,
     withCredentials: true,
   });
 
-  if (res.data.error) {
+  if (res.payload.Msg) {
     notificationController.error({
-      message: `${res.data.error}`,
+      message: `${res.payload.Msg}`,
     });
-    return
+    return;
   }
   return res.data;
 });
@@ -32,7 +32,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isLogin = false;
     },
-    login:(state) => {
+    login: (state) => {
       state.isLogin = true;
     },
   },
@@ -46,5 +46,5 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { logout,login } = authSlice.actions;
+export const { logout, login } = authSlice.actions;
 export { auth };

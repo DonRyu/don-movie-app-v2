@@ -23,7 +23,8 @@ export const LoginForm: React.FC = () => {
   const handleSubmit = (values: LoginFormData) => {
     setLoading(true);
     dispatch(auth({data:values,path:'login'})).then((res) => {
-      if (res.payload === 'login success') {
+      console.log('res',res)
+      if (res) {
         navigate('/', { replace: true });
       }
     });

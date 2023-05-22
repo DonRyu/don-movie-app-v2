@@ -25,22 +25,22 @@ export const ProfileDropdown: React.FC = () => {
   const dispatch = useAppDispatch();
   const nickname = cookies.get('nickname');
   const accessToken = cookies.get('accessToken');
-  useEffect(() => {
-    !isLogin &&
-      dispatch(auth({ data: { accessToken }, path: 'isLogined' })).then((res) => {
-        if (!res.payload) {
-          cookies.remove('accessToken', { path: '/' });
-          cookies.remove('nickname', { path: '/' });
-          dispatch(logout());
-        } else {
-          dispatch(login());
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   !isLogin &&
+  //     dispatch(auth({ data: { accessToken }, path: 'isLogined' })).then((res) => {
+  //       if (!res.payload) {
+  //         cookies.remove('accessToken', { path: '/' });
+  //         cookies.remove('nickname', { path: '/' });
+  //         dispatch(logout());
+  //       } else {
+  //         dispatch(login());
+  //       }
+  //     });
+  // }, []);
 
   return (
     <>
-      {isLogin ? (
+      {false ? (
         <Popover content={<ProfileOverlay />} trigger="click">
           <S.ProfileDropdownHeader as={Row} gutter={[10, 10]} align="middle">
             <Col>
